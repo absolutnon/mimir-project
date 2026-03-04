@@ -1,23 +1,13 @@
 import Card from "@/components/ui/card";
 import NewsCard from "@/components/news/news-card";
 import Link from "next/link";
-import type { NewsArticle } from "@/types";
+import { fetchAllNews } from "@/lib/news";
 
-async function getLatestNews(): Promise<NewsArticle[]> {
-  try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3000"}/api/news`,
-      { next: { revalidate: 300 } }
-    );
-    const json = await res.json();
-    return (json.articles ?? []).slice(0, 6);
-  } catch {
-    return [];
-  }
-}
+export const revalidate = 300;
 
 export default async function DashboardPage() {
-  const latestNews = await getLatestNews();
+  const { articles } = await fetchAllNews();
+  const latestNews = articles.slice(0, 6);
 
   return (
     <div className="space-y-6">

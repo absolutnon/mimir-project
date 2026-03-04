@@ -1,21 +1,10 @@
 import NewsFeed from "@/components/news/news-feed";
-import type { NewsArticle } from "@/types";
+import { fetchAllNews } from "@/lib/news";
 
-async function getNews(): Promise<NewsArticle[]> {
-  try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:3000"}/api/news`,
-      { next: { revalidate: 300 } }
-    );
-    const json = await res.json();
-    return json.articles ?? [];
-  } catch {
-    return [];
-  }
-}
+export const revalidate = 300;
 
 export default async function NewsPage() {
-  const articles = await getNews();
+  const { articles, fetchedAt } = await fetchAllNews();
 
   return (
     <div className="space-y-6">
@@ -26,7 +15,9 @@ export default async function NewsPage() {
             Aggregated from BBC, Sky News, Fox News, CBS, Al Jazeera &amp; CNN
           </p>
         </div>
-        <span className="text-xs text-gray-400">Refreshes every 5 min</span>
+        <span className="text-xs text-gray-400">
+          Last fetched: {new Date(fetchedAt).toLocaleTimeString()}
+        </span>
       </div>
 
       <NewsFeed articles={articles} />
