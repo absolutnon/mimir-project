@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const navItems = [
   { label: "Dashboard", href: "/dashboard" },
-  // Add more routes here as the project grows
+  { label: "News Feed",  href: "/news" },
 ];
 
 export default function Sidebar() {
