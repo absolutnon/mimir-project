@@ -1,5 +1,5 @@
 import type { NewsArticle } from "@/types";
-import { formatDate } from "@/lib/utils";
+import { formatDateTime } from "@/lib/utils";
 
 const SOURCE_COLORS: Record<string, string> = {
   BBC:          "bg-red-600",
@@ -25,7 +25,7 @@ export default function NewsCard({ article }: { article: NewsArticle }) {
           {article.source}
         </span>
         <span className="text-xs text-gray-400 shrink-0">
-          {formatDate(article.pubDate)}
+          {formatDateTime(article.pubDate)}
         </span>
       </div>
       <p className="text-sm font-semibold leading-snug text-gray-900 dark:text-gray-100 line-clamp-2">
