@@ -37,7 +37,7 @@ export default function NewsFeed({ articles }: { articles: NewsArticle[] }) {
       {filtered.length === 0 ? (
         <p className="text-sm text-gray-400 py-8 text-center">No articles available.</p>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+        <div className="flex flex-col divide-y divide-gray-200 dark:divide-gray-800 rounded-lg border border-gray-200 dark:border-gray-800 overflow-hidden">
           {filtered.map((article) => (
             <NewsCard key={article.id} article={article} />
           ))}

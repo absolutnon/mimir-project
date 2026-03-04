@@ -18,24 +18,29 @@ export default function NewsCard({ article }: { article: NewsArticle }) {
       href={article.link}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex flex-col gap-2 rounded-lg border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-4 hover:shadow-md transition-shadow"
+      className="flex items-start gap-4 px-4 py-3 bg-white dark:bg-gray-900 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
     >
-      <div className="flex items-center justify-between gap-2">
-        <span className={`text-xs font-semibold text-white px-2 py-0.5 rounded-full ${color}`}>
-          {article.source}
-        </span>
-        <span className="text-xs text-gray-400 shrink-0">
-          {formatDateTime(article.pubDate)}
-        </span>
-      </div>
-      <p className="text-sm font-semibold leading-snug text-gray-900 dark:text-gray-100 line-clamp-2">
-        {article.title}
-      </p>
-      {article.description && (
-        <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-3">
-          {article.description}
+      {/* Source badge — fixed width so titles align */}
+      <span className={`mt-0.5 shrink-0 text-xs font-semibold text-white px-2 py-0.5 rounded-full ${color}`}>
+        {article.source}
+      </span>
+
+      {/* Title + description */}
+      <div className="flex-1 min-w-0">
+        <p className="text-sm font-medium text-gray-900 dark:text-gray-100 leading-snug line-clamp-1">
+          {article.title}
         </p>
-      )}
+        {article.description && (
+          <p className="mt-0.5 text-xs text-gray-500 dark:text-gray-400 line-clamp-1">
+            {article.description}
+          </p>
+        )}
+      </div>
+
+      {/* Timestamp — right-aligned */}
+      <span className="shrink-0 text-xs text-gray-400 mt-0.5 whitespace-nowrap">
+        {formatDateTime(article.pubDate)}
+      </span>
     </a>
   );
 }

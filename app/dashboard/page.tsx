@@ -55,7 +55,7 @@ export default async function DashboardPage() {
         {latestNews.length === 0 ? (
           <p className="text-sm text-gray-400">Could not load news at this time.</p>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+          <div className="flex flex-col divide-y divide-gray-200 dark:divide-gray-800 rounded-lg border border-gray-200 dark:border-gray-800 overflow-hidden">
             {latestNews.map((article) => (
               <NewsCard key={article.id} article={article} />
             ))}
