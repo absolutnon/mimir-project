@@ -11,7 +11,7 @@ const FEEDS: { source: NewsSource; url: string }[] = [
   { source: "Sky News",   url: "https://feeds.skynews.com/feeds/rss/home.xml" },
   { source: "Fox News",   url: "https://moxie.foxnews.com/google-publisher/latest.xml" },
   { source: "CBS",        url: "https://www.cbsnews.com/latest/rss/main" },
-  { source: "Al Jazeera", url: "https://www.ajplus.net/stories?format=rss" },
+  { source: "Al Jazeera", url: "https://www.aljazeera.com/xml/rss/all.xml" },
   { source: "CNN",        url: "http://rss.cnn.com/rss/edition.rss" },
 ];
 
