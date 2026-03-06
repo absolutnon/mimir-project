@@ -7,16 +7,14 @@ export default async function NewsPage() {
   const { articles, fetchedAt } = await fetchAllNews();
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
+    <div className="max-w-4xl space-y-6">
+      <div className="flex items-end justify-between">
         <div>
-          <h2 className="text-2xl font-bold">Breaking News</h2>
-          <p className="text-sm text-gray-500 mt-1">
-            Aggregated from BBC, Sky News, Fox News, CBS, Al Jazeera &amp; CNN
-          </p>
+          <h1 className="text-2xl font-semibold tracking-tight">Breaking News</h1>
+          <p className="text-sm text-[#999] mt-0.5">BBC · Sky News · Fox News · CBS · Al Jazeera · CNN</p>
         </div>
-        <span className="text-xs text-gray-400">
-          Last fetched: {new Date(fetchedAt).toLocaleTimeString()}
+        <span className="text-xs text-[#bbb]">
+          Updated {new Date(fetchedAt).toLocaleTimeString()}
         </span>
       </div>
 

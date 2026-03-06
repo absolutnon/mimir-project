@@ -1,26 +1,21 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/layout/header";
 import Sidebar from "@/components/layout/sidebar";
 
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+
 export const metadata: Metadata = {
-  title: "Mimir Dashboard",
+  title: "Mimir",
   description: "Data visualization dashboard",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className="flex h-screen overflow-hidden bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100">
+    <html lang="en" className={inter.variable}>
+      <body className="flex h-screen overflow-hidden bg-[#f5f5f5] dark:bg-[#0f0f0f] text-[#111] dark:text-[#f0f0f0] font-[var(--font-inter)] antialiased">
         <Sidebar />
-        <div className="flex flex-col flex-1 overflow-hidden">
-          <Header />
-          <main className="flex-1 overflow-y-auto p-6">{children}</main>
-        </div>
+        <main className="flex-1 overflow-y-auto p-8">{children}</main>
       </body>
     </html>
   );

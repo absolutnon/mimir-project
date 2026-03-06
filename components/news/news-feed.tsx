@@ -17,16 +17,16 @@ export default function NewsFeed({ articles }: { articles: NewsArticle[] }) {
 
   return (
     <div className="space-y-4">
-      {/* Source filter */}
-      <div className="flex flex-wrap gap-2">
+      {/* Tab filter */}
+      <div className="flex gap-0 border-b border-[#e8e8e8] dark:border-[#1f1f1f]">
         {SOURCES.map((s) => (
           <button
             key={s}
             onClick={() => setActive(s)}
-            className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
+            className={`px-3 py-2 text-xs font-medium transition-colors border-b-2 -mb-px ${
               active === s
-                ? "bg-blue-600 text-white"
-                : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700"
+                ? "border-[#111] dark:border-white text-[#111] dark:text-white"
+                : "border-transparent text-[#aaa] dark:text-[#555] hover:text-[#444] dark:hover:text-[#aaa]"
             }`}
           >
             {s}
@@ -35,9 +35,9 @@ export default function NewsFeed({ articles }: { articles: NewsArticle[] }) {
       </div>
 
       {filtered.length === 0 ? (
-        <p className="text-sm text-gray-400 py-8 text-center">No articles available.</p>
+        <p className="text-sm text-[#aaa] py-12 text-center">No articles available.</p>
       ) : (
-        <div className="flex flex-col divide-y divide-gray-200 dark:divide-gray-800 rounded-lg border border-gray-200 dark:border-gray-800 overflow-hidden">
+        <div className="flex flex-col bg-white dark:bg-[#141414] rounded-xl border border-[#e8e8e8] dark:border-[#1f1f1f] overflow-hidden divide-y divide-[#f3f3f3] dark:divide-[#1a1a1a]">
           {filtered.map((article) => (
             <NewsCard key={article.id} article={article} />
           ))}
