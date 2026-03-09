@@ -70,3 +70,39 @@ export interface MimirMetadataDelta {
     formData: Partial<MimirMetadataFormData>;
   };
 }
+
+export type MdfFieldType =
+  | "text" | "checkbox" | "date" | "number"
+  | "choice" | "multiplechoice" | "link" | "user" | "subtype";
+
+export interface MdfFieldAlternative {
+  label: string;
+  value: string;
+}
+
+export interface MdfField {
+  id: string;
+  fieldId: string;
+  type: MdfFieldType;
+  required: boolean;
+  defaultValue?: unknown;
+  alternatives?: MdfFieldAlternative[];
+  optionListId?: string;
+}
+
+export interface MdfSummary {
+  id: string;
+  label: string;
+  active: boolean;
+  displayName?: string;
+  flavor?: string;
+  color?: string;
+  icon?: string;
+}
+
+export interface Mdf extends MdfSummary {
+  fields: MdfField[];
+  views?: unknown;
+  viewSections?: unknown;
+  rule?: string;
+}
